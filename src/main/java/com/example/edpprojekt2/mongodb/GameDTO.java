@@ -20,6 +20,14 @@ public class GameDTO {
         this.time = time;
     }
 
+    public GameDTO(ObjectId id, String date, String prize, String result, String time) {
+        this.id = id;
+        this.date = date;
+        this.prize = prize;
+        this.result = result;
+        this.time = time;
+    }
+
     public ObjectId getId() {
         return id;
     }
@@ -65,8 +73,9 @@ public class GameDTO {
         return "Game{"
                 + "id='" + id + "'"
                 + ", date='" + date + "'"
-                + ", date='" + date + "'"
-                + ", date='" + date + "'"
+                + ", prize='" + prize + "'"
+                + ", result='" + result + "'"
+                + ", time='" + time + "'"
                 + "}";
     }
 

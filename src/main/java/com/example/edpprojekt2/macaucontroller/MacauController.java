@@ -1,6 +1,7 @@
 package com.example.edpprojekt2.macaucontroller;
 
 import com.example.edpprojekt2.HelloApplication;
+import com.example.edpprojekt2.currencyapi.CurrencyService;
 import com.example.edpprojekt2.macaugame.MacauGame;
 import com.example.edpprojekt2.mongodb.MongoAdapter;
 import javafx.fxml.FXML;
@@ -15,10 +16,11 @@ import javafx.scene.layout.Pane;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
+
 public class MacauController {
-    private static final String MONGODB_URL = "mongodb+srv://root:root@cluster0.befft.mongodb.net/?retryWrites=true&w=majority";
     private static final List<String> CURRENCIES = List.of("PLN", "EUR", "USD", "GBP");
 
     @FXML
@@ -48,8 +50,21 @@ public class MacauController {
     @FXML
     private TextArea errorsHolder;
 
+    @FXML
+    private Label dollarsLabel;
+
+    @FXML
+    private Label euroLabel;
+
+    @FXML
+    private Label poundLabel;
+
+    @FXML
+    private Label usersBetLabel;
+
     private MacauGame macauGame = null;
     private MongoAdapter mongoAdapter = new MongoAdapter();
+    private CurrencyService service = new CurrencyService();
 
 
     @FXML
@@ -93,6 +108,13 @@ public class MacauController {
             setUserHand();
             setComputerHand();
             tableCardsAmount.setText("Table Cards: " + macauGame.getTableCardsSize());
+
+            Map<String, String> currencyExchange = service.getTranslatedBet(this.usersBet.getText());
+
+            this.dollarsLabel.setText("In dollars: " + currencyExchange.get("USD") + " USD");
+            this.euroLabel.setText("In Euro: " + currencyExchange.get("EUR") + " EUR");
+            this.poundLabel.setText("In Pounds: " + currencyExchange.get("GBP") + " GBP");
+            this.usersBetLabel.setText("User's bet: " + this.usersBet.getText());
         } else {
             this.errorsHolder.setText("You have to give your bet, even 0 PLN\n Value: " + this.usersBet.getText() + " is not valid\n");
         }

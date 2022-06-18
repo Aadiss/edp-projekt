@@ -11,7 +11,7 @@
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
     <Button onAction="#onHelloButtonClick" style="-fx-background-color: #77C66E;" text="Play!" />
-    <Button style="-fx-background-color: #77C66E; -fx-border-radius: 10px;" text="See your recent games!" />
+    <Button onAction="#showRecentGames" style="-fx-background-color: #77C66E; -fx-border-radius: 10px;" text="See your recent games!" />
    <Label prefHeight="51.0" prefWidth="262.0" text="This is Simple Macau Game created for educational purpose" textAlignment="CENTER" textFill="#bdd02f" textOverrun="CLIP" wrapText="true">
       <font>
          <Font name="System Italic" size="16.0" />

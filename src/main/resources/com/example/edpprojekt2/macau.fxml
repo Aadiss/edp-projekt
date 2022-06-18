@@ -43,10 +43,10 @@
          <Button fx:id="getCardButton" layoutX="1080.0" layoutY="387.0" mnemonicParsing="false" onAction="#getCard" text="Get Card" />
          <Pane fx:id="computerHandPane" prefHeight="200.0" prefWidth="1026.0" />
          <Label fx:id="tableCardsAmount" layoutX="320.0" layoutY="321.0" text="Table Cards: " />
-         <Label fx:id="usersBetLabel" layoutX="31.0" layoutY="240.0" prefHeight="17.0" prefWidth="87.0" style="-fx-background-color: 77C66E;" text="User's bet:" textFill="#3e8036" />
-         <Label fx:id="dollarsLabel" layoutX="31.0" layoutY="267.0" prefHeight="17.0" prefWidth="87.0" style="-fx-background-color: 77C66E;" text="In Dollars:" textFill="#3e8036" />
-         <Label layoutX="31.0" layoutY="291.0" prefHeight="17.0" prefWidth="87.0" style="-fx-background-color: 77C66E;" text="In Euro:" textFill="#3e8036" />
-         <Label layoutX="31.0" layoutY="321.0" prefHeight="17.0" prefWidth="87.0" style="-fx-background-color: 77C66E;" text="In Pounds:" textFill="#3e8036" />
+         <Label fx:id="usersBetLabel" layoutX="31.0" layoutY="240.0" prefHeight="18.0" prefWidth="139.0" style="-fx-background-color: 77C66E;" text="User's bet:" textFill="#3e8036" />
+         <Label fx:id="dollarsLabel" layoutX="31.0" layoutY="267.0" prefHeight="18.0" prefWidth="139.0" style="-fx-background-color: 77C66E;" text="In Dollars:" textFill="#3e8036" />
+         <Label fx:id="euroLabel" layoutX="31.0" layoutY="291.0" prefHeight="18.0" prefWidth="139.0" style="-fx-background-color: 77C66E;" text="In Euro:" textFill="#3e8036" />
+         <Label fx:id="poundLabel" layoutX="31.0" layoutY="321.0" prefHeight="18.0" prefWidth="139.0" style="-fx-background-color: 77C66E;" text="In Pounds:" textFill="#3e8036" />
          <TextField fx:id="usersBet" layoutX="774.0" layoutY="317.0" prefHeight="18.0" prefWidth="142.0" promptText="20.95 PLN" style="-fx-background-color: #77C66E;" />
          <Label layoutX="789.0" layoutY="291.0" prefHeight="17.0" prefWidth="87.0" style="-fx-background-color: 77C66E;" text="Your Bet:" textFill="#3e8036" />
          <TextArea fx:id="errorsHolder" editable="false" layoutX="679.0" layoutY="354.0" prefHeight="103.0" prefWidth="314.0" promptText="Application messages..." style="-fx-background-color: #808080; -fx-border-color: #808080 #808080;" />

@@ -5,6 +5,7 @@ import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import org.bson.Document;
+import org.bson.types.ObjectId;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +26,7 @@ public class MongoAdapter {
     }
 
     private GameDTO toGameDTO(Document doc){
-        return new GameDTO(doc.get("date").toString(), doc.get("prize").toString(), doc.get("result").toString(), doc.get("time").toString());
+        return new GameDTO(new ObjectId(doc.get("_id").toString()), doc.get("date").toString(), doc.get("prize").toString(), doc.get("result").toString(), doc.get("time").toString());
     }
 
     public GameDTO getLastGame(){
