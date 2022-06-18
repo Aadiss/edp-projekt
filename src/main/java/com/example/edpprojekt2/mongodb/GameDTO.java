@@ -71,9 +71,6 @@ public class GameDTO {
     }
 
     public Document toDocument() {
-        Document game = new Document("date", date);
-        game.append("prize", prize);
-        game.append("result", result).append("time", time);
-        return game;
+        return new Document("date", date).append("prize", prize).append("result", result).append("time", time);
     }
 }

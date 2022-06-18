@@ -2,21 +2,24 @@ package com.example.edpprojekt2.macaucontroller;
 
 import com.example.edpprojekt2.HelloApplication;
 import com.example.edpprojekt2.macaugame.MacauGame;
-import com.example.edpprojekt2.mongodb.GameDTO;
 import com.example.edpprojekt2.mongodb.MongoAdapter;
-import com.mongodb.client.MongoClient;
-import com.mongodb.client.MongoClients;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class MacauController {
     private static final String MONGODB_URL = "mongodb+srv://root:root@cluster0.befft.mongodb.net/?retryWrites=true&w=majority";
+    private static final List<String> CURRENCIES = List.of("PLN", "EUR", "USD", "GBP");
 
     @FXML
     private ImageView lastCardImage;
@@ -39,6 +42,12 @@ public class MacauController {
     @FXML
     private Label tableCardsAmount;
 
+    @FXML
+    private TextField usersBet;
+
+    @FXML
+    private TextArea errorsHolder;
+
     private MacauGame macauGame = null;
     private MongoAdapter mongoAdapter = new MongoAdapter();
 
@@ -46,15 +55,29 @@ public class MacauController {
     @FXML
     protected void getCard() throws IOException {
         this.macauGame.userGetCard();
-        System.out.println("GET CARD!");
         refresh();
+    }
 
-        MongoAdapter.getCollection();
+    private Boolean validUserBet(String bet){
+        try {
+            List<String> splitted = Arrays.stream(bet.split(" ")).collect(Collectors.toList());
+
+            if(!CURRENCIES.contains(splitted.get(1))){
+                return false;
+            }
+
+            Float value = Float.parseFloat(splitted.get(0));
+
+            return true;
+        }catch (Exception e){
+            return false;
+        }
     }
 
     @FXML
     protected void startGame() throws IOException {
-        if (this.macauGame == null) {
+        this.errorsHolder.clear();
+        if (this.macauGame == null && validUserBet(this.usersBet.getText())) {
             this.macauGame = new MacauGame();
             macauGame.initializeGame();
             String topCard;
@@ -70,6 +93,8 @@ public class MacauController {
             setUserHand();
             setComputerHand();
             tableCardsAmount.setText("Table Cards: " + macauGame.getTableCardsSize());
+        } else {
+            this.errorsHolder.setText("You have to give your bet, even 0 PLN\n Value: " + this.usersBet.getText() + " is not valid\n");
         }
     }
 

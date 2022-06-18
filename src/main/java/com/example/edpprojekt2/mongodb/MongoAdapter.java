@@ -20,11 +20,6 @@ public class MongoAdapter {
         this.edpCollection = db.getCollection("edp");
     }
 
-    public static void getCollection(){
-        MongoClient client =  MongoClients.create(MONGODB_URL);
-        client.listDatabaseNames().forEach(System.out::println);
-    }
-
     public void insert(Document game){
         this.edpCollection.insertOne(game);
     }
