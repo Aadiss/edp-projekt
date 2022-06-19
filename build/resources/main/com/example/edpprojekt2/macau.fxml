@@ -50,6 +50,8 @@
          <TextField fx:id="usersBet" layoutX="774.0" layoutY="317.0" prefHeight="18.0" prefWidth="142.0" promptText="20.95 PLN" style="-fx-background-color: #77C66E;" />
          <Label layoutX="789.0" layoutY="291.0" prefHeight="17.0" prefWidth="87.0" style="-fx-background-color: 77C66E;" text="Your Bet:" textFill="#3e8036" />
          <TextArea fx:id="errorsHolder" editable="false" layoutX="679.0" layoutY="354.0" prefHeight="103.0" prefWidth="314.0" promptText="Application messages..." style="-fx-background-color: #808080; -fx-border-color: #808080 #808080;" />
+         <Label fx:id="turnLabel" layoutX="320.0" layoutY="291.0" prefHeight="18.0" prefWidth="139.0" style="-fx-background-color: 77C66E;" text="Turn:" textFill="#3e8036" />
+         <Button fx:id="computerTurnButton" onAction="#performComputerMove" layoutX="320.0" layoutY="228.0" mnemonicParsing="false" text="Perform Computer Turn" />
       </children>
    </Pane>
 </VBox>

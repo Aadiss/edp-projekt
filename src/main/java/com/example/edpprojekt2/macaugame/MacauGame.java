@@ -1,12 +1,13 @@
 package com.example.edpprojekt2.macaugame;
 
-
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Random;
 
 import static com.example.edpprojekt2.macaugame.CardsList.AVAILABLE_STARTERS;
 import static com.example.edpprojekt2.macaugame.CardsList.CARDS_PATHS;
+
 
 public class MacauGame {
     private List<String> remainingCards;
@@ -14,6 +15,8 @@ public class MacauGame {
     private List<String> computerCards = new ArrayList<String>();
     private List<String> tableCards = new ArrayList<String>();
     private String topCard;
+    private Date gameStart;
+    private Result result;
 
     public String getTopCard() {
         return topCard;
@@ -38,6 +41,7 @@ public class MacauGame {
     public MacauGame() {
         this.remainingCards = new ArrayList<>(CARDS_PATHS);
         this.topCard = "green_back";
+        this.gameStart = new Date();
     }
 
     public void initializeGame() {
@@ -108,6 +112,37 @@ public class MacauGame {
     private void resetTable() {
         this.remainingCards.addAll(this.tableCards);
         this.remainingCards.remove(this.topCard);
+        this.tableCards.clear();
         this.tableCards.add(this.topCard);
+    }
+
+    private void getComputerCard() {
+        Random random = new Random();
+        if (this.remainingCards.size() > 0) {
+            int idx = random.nextInt(this.remainingCards.size());
+            String card = this.remainingCards.get(idx);
+            this.computerCards.add(card);
+            this.remainingCards.remove(card);
+        } else {
+            resetTable();
+            if (this.remainingCards.size() > 0) {
+                int idx = random.nextInt(this.remainingCards.size());
+                String card = this.remainingCards.get(idx);
+                this.computerCards.add(card);
+                this.remainingCards.remove(card);
+            }
+        }
+    }
+
+    public void performComputerMove() {
+        List<String> possibleHand = getPossibleTopCards(this.computerCards);
+
+        if (possibleHand.size() > 0) {
+            this.topCard = possibleHand.get(0);
+            this.computerCards.remove(possibleHand.get(0));
+            this.tableCards.add(possibleHand.get(0));
+        } else {
+            getComputerCard();
+        }
     }
 }

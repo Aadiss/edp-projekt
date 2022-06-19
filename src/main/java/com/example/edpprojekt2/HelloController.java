@@ -1,10 +1,8 @@
 package com.example.edpprojekt2;
 
-import com.example.edpprojekt2.recentgames.RecentGamesController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 import java.io.IOException;

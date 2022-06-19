@@ -1,20 +1,17 @@
 package com.example.edpprojekt2.recentgames;
 
-import com.example.edpprojekt2.HelloApplication;
 import com.example.edpprojekt2.mongodb.GameDTO;
 import com.example.edpprojekt2.mongodb.MongoAdapter;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.stage.Stage;
 import org.bson.types.ObjectId;
 
 import java.io.IOException;
 import java.util.List;
+
 
 public class RecentGamesController {
 
