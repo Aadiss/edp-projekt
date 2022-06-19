@@ -7,11 +7,10 @@ import okhttp3.Response;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
+
 
 public class CurrencyService {
     private OkHttpClient client;
@@ -30,7 +29,6 @@ public class CurrencyService {
 
         Response response = getCurrencies(currency, symbols);
         String json = response.body().string();
-        System.out.println(json);
         CurrencyDTO currencyDTO = gson.fromJson(json, CurrencyDTO.class);
         return prepareResult(currencyDTO, bet, symbolsList);
     }

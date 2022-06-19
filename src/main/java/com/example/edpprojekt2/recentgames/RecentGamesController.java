@@ -27,7 +27,7 @@ public class RecentGamesController {
         TableColumn<GameDTO, String> dateColumn = new TableColumn<>("Date");
         TableColumn<GameDTO, String> prizeColumn = new TableColumn<>("Prize");
         TableColumn<GameDTO, String> resultColumn = new TableColumn<>("Result");
-        TableColumn<GameDTO, String> timeColumn = new TableColumn<>("Time [min]");
+        TableColumn<GameDTO, String> timeColumn = new TableColumn<>("Time [sec]");
 
         idColumn.prefWidthProperty().bind(table.widthProperty().multiply(0.2));
         dateColumn.prefWidthProperty().bind(table.widthProperty().multiply(0.2));

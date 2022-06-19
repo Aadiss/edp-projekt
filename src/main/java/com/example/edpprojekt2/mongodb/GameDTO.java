@@ -10,9 +10,6 @@ public class GameDTO {
     private String result;
     private String time;
 
-    public GameDTO() {
-    }
-
     public GameDTO(String date, String prize, String result, String time) {
         this.date = date;
         this.prize = prize;

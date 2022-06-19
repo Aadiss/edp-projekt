@@ -94,7 +94,7 @@ public class MacauController {
         try {
             if (currency == null) return false;
 
-            Float value = Float.parseFloat(bet);
+            Float.parseFloat(bet);
             return true;
         } catch (Exception e) {
             return false;

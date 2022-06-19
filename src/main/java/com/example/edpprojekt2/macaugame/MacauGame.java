@@ -51,12 +51,12 @@ public class MacauGame {
         this.remainingCards = new ArrayList<>(CARDS_PATHS);
         this.topCard = "green_back";
         this.gameStart = new Date();
-        System.out.println(this.gameStart);
         this.userBet = bet;
     }
 
     public void initializeGame() {
         Random random = new Random();
+
         for (int i = 0; i < 11; i++) {
             int idx = random.nextInt(this.remainingCards.size());
             String card = this.remainingCards.get(idx);
@@ -104,6 +104,7 @@ public class MacauGame {
 
     public void userGetCard() {
         Random random = new Random();
+
         if (this.remainingCards.size() > 0) {
             int idx = random.nextInt(this.remainingCards.size());
             String card = this.remainingCards.get(idx);
@@ -129,6 +130,7 @@ public class MacauGame {
 
     private void getComputerCard() {
         Random random = new Random();
+
         if (this.remainingCards.size() > 0) {
             int idx = random.nextInt(this.remainingCards.size());
             String card = this.remainingCards.get(idx);
@@ -174,7 +176,7 @@ public class MacauGame {
     }
 
     public GameDTO prepareGameDTO(){
-        long duration = TimeUnit.MICROSECONDS.toMinutes(this.gameStop.getTime() - this.gameStart.getTime());
+        long duration = TimeUnit.MICROSECONDS.toSeconds(this.gameStop.getTime() - this.gameStart.getTime());
         return new GameDTO(this.gameStart.toString(), this.userBet, this.result.toString(), Long.toString(duration));
     }
 }
