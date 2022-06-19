@@ -22,20 +22,17 @@ public class CurrencyService {
         this.client = new OkHttpClient();
     }
 
-    public Map<String, String> getTranslatedBet(String bet) throws IOException {
-        System.out.println(bet);
-        List<String> splitted = Arrays.stream(bet.split(" ")).collect(Collectors.toList());
-        String base = splitted.get(1);
+    public Map<String, String> getTranslatedBet(String bet, String currency) throws IOException {;
         List<String> symbolsList = new ArrayList<>(CURRENCIES);
-        symbolsList.remove(base);
+        symbolsList.remove(currency);
 
         String symbols = String.join(",", symbolsList);
-        System.out.println(symbols);
 
-        Response response = getCurrencies();
+        Response response = getCurrencies(currency, symbols);
         String json = response.body().string();
+        System.out.println(json);
         CurrencyDTO currencyDTO = gson.fromJson(json, CurrencyDTO.class);
-        return prepareResult(currencyDTO, splitted.get(0), symbolsList);
+        return prepareResult(currencyDTO, bet, symbolsList);
     }
 
     private Map<String, String> prepareResult(CurrencyDTO response, String usersBet, List<String> symbols) {
@@ -47,6 +44,7 @@ public class CurrencyService {
             result.put(symb, calc.toString());
         }
 
+        System.out.println(result);
         return result;
     }
 
@@ -54,12 +52,13 @@ public class CurrencyService {
         return "https://api.apilayer.com/exchangerates_data" + path;
     }
 
-    private Response getCurrencies() throws IOException {
+    private Response getCurrencies(String base, String symbols) throws IOException {
         Request request = new Request.Builder()
-                .url(getUrl("/latest?base=PLN&symbols=GBP,USD,EUR"))
+                .url(getUrl("/latest?base=" + base + "&symbols=" + symbols))
                 .header("apikey", "QHjqeOwYFrG7I9BcLpx0MIv2N5PVIZ41")
                 .get()
                 .build();
+        System.out.println(request.url());
         return client.newCall(request).execute();
     }
 

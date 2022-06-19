@@ -27,7 +27,7 @@ public class RecentGamesController {
         TableColumn<GameDTO, String> dateColumn = new TableColumn<>("Date");
         TableColumn<GameDTO, String> prizeColumn = new TableColumn<>("Prize");
         TableColumn<GameDTO, String> resultColumn = new TableColumn<>("Result");
-        TableColumn<GameDTO, String> timeColumn = new TableColumn<>("Time");
+        TableColumn<GameDTO, String> timeColumn = new TableColumn<>("Time [min]");
 
         idColumn.prefWidthProperty().bind(table.widthProperty().multiply(0.2));
         dateColumn.prefWidthProperty().bind(table.widthProperty().multiply(0.2));
@@ -48,7 +48,5 @@ public class RecentGamesController {
         this.table.getColumns().add(resultColumn);
         this.table.getColumns().add(timeColumn);
         this.table.setItems(FXCollections.observableArrayList(games));
-
-        System.out.println(this.table.getItems().stream().count());
     }
 }

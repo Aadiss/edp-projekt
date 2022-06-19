@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextArea?>
@@ -12,6 +13,8 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
 <VBox alignment="CENTER" prefHeight="722.0" prefWidth="1209.0" spacing="20.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.edpprojekt2.macaucontroller.MacauController">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
@@ -47,11 +50,21 @@
          <Label fx:id="dollarsLabel" layoutX="31.0" layoutY="267.0" prefHeight="18.0" prefWidth="139.0" style="-fx-background-color: 77C66E;" text="In Dollars:" textFill="#3e8036" />
          <Label fx:id="euroLabel" layoutX="31.0" layoutY="291.0" prefHeight="18.0" prefWidth="139.0" style="-fx-background-color: 77C66E;" text="In Euro:" textFill="#3e8036" />
          <Label fx:id="poundLabel" layoutX="31.0" layoutY="321.0" prefHeight="18.0" prefWidth="139.0" style="-fx-background-color: 77C66E;" text="In Pounds:" textFill="#3e8036" />
-         <TextField fx:id="usersBet" layoutX="774.0" layoutY="317.0" prefHeight="18.0" prefWidth="142.0" promptText="20.95 PLN" style="-fx-background-color: #77C66E;" />
+         <TextField fx:id="usersBet" layoutX="774.0" layoutY="317.0" prefHeight="26.0" prefWidth="106.0" promptText="20.95 PLN" style="-fx-background-color: #77C66E;" />
          <Label layoutX="789.0" layoutY="291.0" prefHeight="17.0" prefWidth="87.0" style="-fx-background-color: 77C66E;" text="Your Bet:" textFill="#3e8036" />
          <TextArea fx:id="errorsHolder" editable="false" layoutX="679.0" layoutY="354.0" prefHeight="103.0" prefWidth="314.0" promptText="Application messages..." style="-fx-background-color: #808080; -fx-border-color: #808080 #808080;" />
          <Label fx:id="turnLabel" layoutX="320.0" layoutY="291.0" prefHeight="18.0" prefWidth="139.0" style="-fx-background-color: 77C66E;" text="Turn:" textFill="#3e8036" />
-         <Button fx:id="computerTurnButton" onAction="#performComputerMove" layoutX="320.0" layoutY="228.0" mnemonicParsing="false" text="Perform Computer Turn" />
+         <Button fx:id="computerTurnButton" layoutX="320.0" layoutY="228.0" mnemonicParsing="false" onAction="#performComputerMove" text="Perform Computer Turn" />
+         <ChoiceBox fx:id="currencyChoice" layoutX="887.0" layoutY="318.0" prefHeight="27.0" prefWidth="87.0" >
+         <items>
+            <FXCollections fx:factory="observableArrayList">
+               <String fx:value="PLN" />
+               <String fx:value="EUR" />
+               <String fx:value="GBP" />
+               <String fx:value="USD" />
+            </FXCollections>
+         </items>
+         </ChoiceBox>
       </children>
    </Pane>
 </VBox>

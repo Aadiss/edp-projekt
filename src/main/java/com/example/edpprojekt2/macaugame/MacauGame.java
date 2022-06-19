@@ -1,9 +1,12 @@
 package com.example.edpprojekt2.macaugame;
 
+import com.example.edpprojekt2.mongodb.GameDTO;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Random;
+import java.util.concurrent.TimeUnit;
 
 import static com.example.edpprojekt2.macaugame.CardsList.AVAILABLE_STARTERS;
 import static com.example.edpprojekt2.macaugame.CardsList.CARDS_PATHS;
@@ -16,7 +19,9 @@ public class MacauGame {
     private List<String> tableCards = new ArrayList<String>();
     private String topCard;
     private Date gameStart;
+    private Date gameStop;
     private Result result;
+    private String userBet;
 
     public String getTopCard() {
         return topCard;
@@ -38,10 +43,16 @@ public class MacauGame {
         return this.userCards;
     }
 
-    public MacauGame() {
+    public Result getResult() {
+        return result;
+    }
+
+    public MacauGame(String bet) {
         this.remainingCards = new ArrayList<>(CARDS_PATHS);
         this.topCard = "green_back";
         this.gameStart = new Date();
+        System.out.println(this.gameStart);
+        this.userBet = bet;
     }
 
     public void initializeGame() {
@@ -144,5 +155,26 @@ public class MacauGame {
         } else {
             getComputerCard();
         }
+    }
+
+    public Boolean isGameOver(){
+        if(this.computerCards.size() == 0){
+            this.result = Result.COMPUTER_WON;
+            this.gameStop = new Date();
+            return true;
+        }
+
+        if(this.userCards.size() == 0){
+            this.result = Result.USER_WON;
+            this.gameStop = new Date();
+            return true;
+        }
+
+        return false;
+    }
+
+    public GameDTO prepareGameDTO(){
+        long duration = TimeUnit.MICROSECONDS.toMinutes(this.gameStop.getTime() - this.gameStart.getTime());
+        return new GameDTO(this.gameStart.toString(), this.userBet, this.result.toString(), Long.toString(duration));
     }
 }
