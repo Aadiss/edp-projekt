@@ -16,7 +16,7 @@
          <children>
             <ImageView fitHeight="236.0" fitWidth="200.0" layoutX="4.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@qIKLzX_r_400x400-removebg-preview.png" />
+                  <Image url="@images/qIKLzX_r_400x400-removebg-preview.png" />
                </image>
             </ImageView>
             <Label layoutX="36.0" layoutY="264.0" text="WAT - login form">
@@ -30,7 +30,7 @@
          <children>
             <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="96.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@login-935679-removebg-preview.png" />
+                  <Image url="@images/login-935679-removebg-preview.png" />
                </image>
             </ImageView>
             <Label layoutX="126.0" layoutY="164.0" text="Username / Email">
