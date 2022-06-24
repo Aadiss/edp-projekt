@@ -28,7 +28,7 @@ public class RecentGamesController {
         TableColumn<GameDTO, String> prizeColumn = new TableColumn<>("Prize");
         TableColumn<GameDTO, String> resultColumn = new TableColumn<>("Result");
         TableColumn<GameDTO, String> timeColumn = new TableColumn<>("Time [sec]");
-        TableColumn<GameDTO, String> userIdColumn = new TableColumn<>("UserId");
+        TableColumn<GameDTO, String> userIdColumn = new TableColumn<>("Username");
 
         idColumn.prefWidthProperty().bind(table.widthProperty().multiply(0.16667));
         dateColumn.prefWidthProperty().bind(table.widthProperty().multiply(0.16667));
@@ -42,7 +42,7 @@ public class RecentGamesController {
         prizeColumn.setCellValueFactory(new PropertyValueFactory<GameDTO, String>("prize"));
         resultColumn.setCellValueFactory(new PropertyValueFactory<GameDTO, String>("result"));
         timeColumn.setCellValueFactory(new PropertyValueFactory<GameDTO, String>("time"));
-        userIdColumn.setCellValueFactory(new PropertyValueFactory<GameDTO, String>("userId"));
+        userIdColumn.setCellValueFactory(new PropertyValueFactory<GameDTO, String>("username"));
         this.table.setEditable(true);
 
         this.table.getColumns().add(idColumn);

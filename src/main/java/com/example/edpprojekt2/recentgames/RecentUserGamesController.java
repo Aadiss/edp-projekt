@@ -24,7 +24,7 @@ public class RecentUserGamesController {
     private TableView table;
 
     public void initTable() throws IOException {
-        List<GameDTO> games = mongoAdapter.getUserGames(loginStateSingleton.getLoggedUser().getId().toString());
+        List<GameDTO> games = mongoAdapter.getUserGames(loginStateSingleton.getLoggedUser().getUsername());
 
         TableColumn<GameDTO, ObjectId> idColumn = new TableColumn<>("Id");
         TableColumn<GameDTO, String> dateColumn = new TableColumn<>("Date");

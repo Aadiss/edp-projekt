@@ -180,6 +180,6 @@ public class MacauGame {
 
     public GameDTO prepareGameDTO(){
         long duration = TimeUnit.MICROSECONDS.toSeconds(this.gameStop.getTime() - this.gameStart.getTime());
-        return new GameDTO(this.gameStart.toString(), this.userBet, this.result.toString(), Long.toString(duration), loginStateSingleton.getLoggedUser().getId().toString());
+        return new GameDTO(this.gameStart.toString(), this.userBet, this.result.toString(), Long.toString(duration), loginStateSingleton.getLoggedUser().getUsername());
     }
 }

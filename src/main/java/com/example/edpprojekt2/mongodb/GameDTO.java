@@ -9,23 +9,23 @@ public class GameDTO {
     private String prize;
     private String result;
     private String time;
-    private String userId;
+    private String username;
 
-    public GameDTO(String date, String prize, String result, String time, String userId) {
+    public GameDTO(String date, String prize, String result, String time, String username) {
         this.date = date;
         this.prize = prize;
         this.result = result;
         this.time = time;
-        this.userId = userId;
+        this.username = username;
     }
 
-    public GameDTO(ObjectId id, String date, String prize, String result, String time, String userId) {
+    public GameDTO(ObjectId id, String date, String prize, String result, String time, String username) {
         this.id = id;
         this.date = date;
         this.prize = prize;
         this.result = result;
         this.time = time;
-        this.userId = userId;
+        this.username = username;
     }
 
     public ObjectId getId() {
@@ -48,6 +48,10 @@ public class GameDTO {
         return time;
     }
 
+    public String getUsername() {
+        return username;
+    }
+
     public void setId(ObjectId id) {
         this.id = id;
     }
@@ -68,6 +72,10 @@ public class GameDTO {
         this.time = time;
     }
 
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
     @Override
     public String toString() {
         return "Game{"
@@ -76,11 +84,11 @@ public class GameDTO {
                 + ", prize='" + prize + "'"
                 + ", result='" + result + "'"
                 + ", time='" + time + "'"
-                + ", userId='" + userId + "'"
+                + ", username='" + username + "'"
                 + "}";
     }
 
     public Document toDocument() {
-        return new Document("date", date).append("prize", prize).append("result", result).append("time", time).append("userId", userId);
+        return new Document("date", date).append("prize", prize).append("result", result).append("time", time).append("username", username);
     }
 }

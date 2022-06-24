@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -13,22 +14,20 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<?import javafx.collections.FXCollections?>
-<?import java.lang.String?>
-<VBox alignment="CENTER" prefHeight="722.0" prefWidth="1209.0" spacing="20.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.edpprojekt2.macaucontroller.MacauController">
+<VBox alignment="CENTER" prefHeight="722.0" prefWidth="1209.0" spacing="20.0" style="-fx-background-color: #848484;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.edpprojekt2.macaucontroller.MacauController">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
    <Pane id="mainPane" prefHeight="738.0" prefWidth="1169.0">
       <children>
-          <Button layoutX="679.0" layoutY="316.0" onAction="#startGame" prefHeight="30.0" prefWidth="78.0" text="Play!" textFill="#724545">
+          <Button layoutX="659.0" layoutY="309.0" onAction="#startGame" prefHeight="45.0" prefWidth="98.0" text="Play!" textFill="#724545">
             <font>
                <Font size="14.0" />
             </font>
          </Button>
       
                 <Label fx:id="welcomeText" layoutX="489.0" layoutY="413.0" prefHeight="45.0" prefWidth="190.0" text="Welcome in simple Macau Game!" />
-         <ImageView fx:id="lastCardImage1" fitHeight="150.0" fitWidth="200.0" layoutX="1064.0" layoutY="200.0" pickOnBounds="true" preserveRatio="true">
+         <ImageView fx:id="lastCardImage1" fitHeight="150.0" fitWidth="200.0" layoutX="1064.0" layoutY="210.0" pickOnBounds="true" preserveRatio="true">
             <image>
                <Image url="@cards/red_back.png" />
             </image>
@@ -38,24 +37,38 @@
                <Image url="@cards/green_back.png" />
             </image>
          </ImageView>
-         <Label fx:id="remainingCardsLabel" layoutX="996.0" layoutY="351.0" prefHeight="17.0" prefWidth="190.0" text="Remaining Cards:" />
+         <Label fx:id="remainingCardsLabel" layoutX="995.0" layoutY="364.0" prefHeight="17.0" prefWidth="190.0" text="Remaining Cards:" />
          <Pane fx:id="cardsHand" layoutX="6.0" layoutY="473.0" prefHeight="195.0" prefWidth="1151.0" />
          <ScrollPane fx:id="scrollHand" layoutX="6.0" layoutY="473.0" prefHeight="200.0" prefWidth="1151.0">
          </ScrollPane>
-         <ScrollPane fx:id="computerHand" layoutX="14.0" layoutY="14.0" prefHeight="186.0" prefWidth="1040.0" />
-         <Button fx:id="getCardButton" layoutX="1080.0" layoutY="387.0" mnemonicParsing="false" onAction="#getCard" text="Get Card" />
-         <Pane fx:id="computerHandPane" prefHeight="200.0" prefWidth="1026.0" />
-         <Label fx:id="tableCardsAmount" layoutX="320.0" layoutY="321.0" text="Table Cards: " />
-         <Label fx:id="usersBetLabel" layoutX="31.0" layoutY="240.0" prefHeight="18.0" prefWidth="139.0" style="-fx-background-color: 77C66E;" text="User's bet:" textFill="#3e8036" />
-         <Label fx:id="dollarsLabel" layoutX="31.0" layoutY="267.0" prefHeight="18.0" prefWidth="139.0" style="-fx-background-color: 77C66E;" text="In Dollars:" textFill="#3e8036" />
-         <Label fx:id="euroLabel" layoutX="31.0" layoutY="291.0" prefHeight="18.0" prefWidth="139.0" style="-fx-background-color: 77C66E;" text="In Euro:" textFill="#3e8036" />
-         <Label fx:id="poundLabel" layoutX="31.0" layoutY="321.0" prefHeight="18.0" prefWidth="139.0" style="-fx-background-color: 77C66E;" text="In Pounds:" textFill="#3e8036" />
-         <TextField fx:id="usersBet" layoutX="774.0" layoutY="317.0" prefHeight="26.0" prefWidth="106.0" promptText="20.95 PLN" style="-fx-background-color: #77C66E;" />
-         <Label layoutX="789.0" layoutY="291.0" prefHeight="17.0" prefWidth="87.0" style="-fx-background-color: 77C66E;" text="Your Bet:" textFill="#3e8036" />
-         <TextArea fx:id="errorsHolder" editable="false" layoutX="679.0" layoutY="354.0" prefHeight="103.0" prefWidth="314.0" promptText="Application messages..." style="-fx-background-color: #808080; -fx-border-color: #808080 #808080;" />
-         <Label fx:id="turnLabel" layoutX="320.0" layoutY="291.0" prefHeight="18.0" prefWidth="139.0" style="-fx-background-color: 77C66E;" text="Turn:" textFill="#3e8036" />
-         <Button fx:id="computerTurnButton" layoutX="320.0" layoutY="228.0" mnemonicParsing="false" onAction="#performComputerMove" text="Perform Computer Turn" />
-         <ChoiceBox fx:id="currencyChoice" layoutX="887.0" layoutY="318.0" prefHeight="27.0" prefWidth="87.0" >
+         <ScrollPane fx:id="computerHand" layoutX="14.0" layoutY="14.0" prefHeight="186.0" prefWidth="1144.0" />
+         <Button fx:id="getCardButton" layoutX="1049.0" layoutY="407.0" mnemonicParsing="false" onAction="#getCard" prefHeight="45.0" prefWidth="98.0" text="Get Card" />
+         <Pane fx:id="computerHandPane" layoutY="14.0" prefHeight="186.0" prefWidth="1151.0" />
+         <Label fx:id="tableCardsAmount" layoutX="327.0" layoutY="246.0" text="Table Cards: " />
+         <Label fx:id="usersBetLabel" layoutX="31.0" layoutY="240.0" prefHeight="18.0" prefWidth="236.0" style="-fx-background-color: 77C66E;" text="User's bet:" textFill="#090a09">
+            <font>
+               <Font size="15.0" />
+            </font></Label>
+         <Label fx:id="dollarsLabel" layoutX="31.0" layoutY="267.0" prefHeight="18.0" prefWidth="236.0" style="-fx-background-color: 77C66E;" text="In Dollars:">
+            <font>
+               <Font size="14.0" />
+            </font></Label>
+         <Label fx:id="euroLabel" layoutX="31.0" layoutY="291.0" prefHeight="18.0" prefWidth="236.0" style="-fx-background-color: 77C66E;" text="In Euro:" textFill="#090a08">
+            <font>
+               <Font size="14.0" />
+            </font></Label>
+         <Label fx:id="poundLabel" layoutX="31.0" layoutY="321.0" prefHeight="18.0" prefWidth="236.0" style="-fx-background-color: 77C66E;" text="In Pounds:">
+            <font>
+               <Font size="14.0" />
+            </font></Label>
+         <TextField fx:id="usersBet" layoutX="762.0" layoutY="317.0" prefHeight="30.0" prefWidth="118.0" promptText="20.95 PLN" style="-fx-background-color: #77C66E;" />
+         <Label layoutX="757.0" layoutY="287.0" prefHeight="17.0" prefWidth="87.0" style="-fx-background-color: 77C66E;" text="Your Bet:">
+            <font>
+               <Font size="20.0" />
+            </font></Label>
+         <Label fx:id="turnLabel" layoutX="327.0" layoutY="216.0" prefHeight="18.0" prefWidth="139.0" style="-fx-background-color: 77C66E;" text="Turn:" />
+         <Button fx:id="computerTurnButton" layoutX="853.0" layoutY="413.0" mnemonicParsing="false" onAction="#performComputerMove" text="Perform Computer Turn" />
+         <ChoiceBox fx:id="currencyChoice" layoutX="887.0" layoutY="318.0" prefHeight="27.0" prefWidth="87.0">
          <items>
             <FXCollections fx:factory="observableArrayList">
                <String fx:value="PLN" />
@@ -65,6 +78,11 @@
             </FXCollections>
          </items>
          </ChoiceBox>
+         <Label fx:id="goodLuckLabel" layoutX="31.0" layoutY="399.0" prefHeight="18.0" prefWidth="296.0" text="Good Luck USERNAME!">
+            <font>
+               <Font name="System Bold" size="24.0" />
+            </font>
+         </Label>
       </children>
    </Pane>
 </VBox>

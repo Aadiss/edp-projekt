@@ -1,6 +1,7 @@
 package com.example.edpprojekt2.macaucontroller;
 
 import com.example.edpprojekt2.HelloApplication;
+import com.example.edpprojekt2.credentials.LoginStateSingleton;
 import com.example.edpprojekt2.currencyapi.CurrencyService;
 import com.example.edpprojekt2.macaugame.MacauGame;
 import com.example.edpprojekt2.mongodb.MongoAdapter;
@@ -10,11 +11,11 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.List;
@@ -52,9 +53,6 @@ public class MacauController {
     private TextField usersBet;
 
     @FXML
-    private TextArea errorsHolder;
-
-    @FXML
     private Label dollarsLabel;
 
     @FXML
@@ -72,10 +70,14 @@ public class MacauController {
     @FXML
     private ChoiceBox currencyChoice;
 
+    @FXML
+    private Label goodLuckLabel;
+
     private MacauGame macauGame = null;
     private MongoAdapter mongoAdapter = new MongoAdapter();
     private CurrencyService service = new CurrencyService();
     private String turn = TURNS.get(new Random().nextInt(2));
+    private LoginStateSingleton loginStateSingleton = LoginStateSingleton.getInstance();
 
     @FXML
     protected void getCard() throws IOException {
@@ -84,7 +86,10 @@ public class MacauController {
             this.turn = TURNS.get(1);
             refresh();
         } else {
-            this.errorsHolder.setText("You can not get card if it is not your turn");
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Not Your turn!");
+            alert.setContentText("You can not get card if it is not Your turn");
+            alert.showAndWait();
         }
     }
 
@@ -101,8 +106,6 @@ public class MacauController {
 
     @FXML
     protected void startGame() throws IOException {
-        this.errorsHolder.clear();
-
         if (this.macauGame == null && validUserBet(this.usersBet.getText(), this.currencyChoice.getValue())) {
             this.macauGame = new MacauGame(this.usersBet.getText() + " " + this.currencyChoice.getValue().toString());
             macauGame.initializeGame();
@@ -129,9 +132,12 @@ public class MacauController {
 
             this.usersBetLabel.setText("User's bet: " + this.usersBet.getText() + " " + this.currencyChoice.getValue().toString());
             this.turnLabel.setText("Turn: " + this.turn);
-
+            this.goodLuckLabel.setText("Good Luck " + loginStateSingleton.getLoggedUser().getUsername());
         } else {
-            this.errorsHolder.setText("You have to give your bet, even 0 PLN\n Value: " + this.usersBet.getText() + " is not valid\n");
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Invalid bet!");
+            alert.setContentText("You have to give your bet, even 0 PLN\n Value: " + this.usersBet.getText() + " is not valid\n");
+            alert.showAndWait();
         }
     }
 
@@ -229,7 +235,10 @@ public class MacauController {
                 }
             }
         } else {
-            this.errorsHolder.setText("You can not put card if it is not your turn");
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Not Your turn!");
+            alert.setContentText("Now is Your turn, computer will be next!");
+            alert.showAndWait();
         }
     }
 
@@ -264,7 +273,10 @@ public class MacauController {
                 handleGameOver();
             }
         } else {
-            this.errorsHolder.setText("Now is Your turn, computer will be next!");
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Not Your turn!");
+            alert.setContentText("Now is Your turn, user has to perform move!");
+            alert.showAndWait();
         }
     }
 
@@ -274,6 +286,9 @@ public class MacauController {
         alert.setTitle("Game is Over!");
         alert.setContentText("The winner is: " + this.macauGame.getResult().toString() + "\nCongratulations!");
         alert.showAndWait();
-        Platform.exit();
+
+        Stage stage = (Stage) euroLabel.getScene().getWindow();
+
+        stage.close();
     }
 }
