@@ -17,12 +17,10 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Random;
-import java.util.stream.Collectors;
 
 
 public class MacauController {
@@ -271,7 +269,7 @@ public class MacauController {
     }
 
     private void handleGameOver() {
-        mongoAdapter.insert(this.macauGame.prepareGameDTO().toDocument());
+        mongoAdapter.insertGame(this.macauGame.prepareGameDTO().toDocument());
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Game is Over!");
         alert.setContentText("The winner is: " + this.macauGame.getResult().toString() + "\nCongratulations!");

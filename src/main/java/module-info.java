@@ -8,6 +8,7 @@ module com.example.edpprojekt2 {
     requires com.google.gson;
     requires okhttp3;
     requires retrofit2.converter.gson;
+    requires com.google.common;
 
     exports com.example.edpprojekt2.macaucontroller;
     exports com.example.edpprojekt2;
@@ -17,4 +18,5 @@ module com.example.edpprojekt2 {
     opens com.example.edpprojekt2.currencyapi to com.google.gson;
     opens com.example.edpprojekt2.recentgames to javafx.fxml;
     opens com.example.edpprojekt2.mongodb to javafx.base;
+    opens com.example.edpprojekt2.credentials;
 }
