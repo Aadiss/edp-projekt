@@ -4,7 +4,7 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="789.0" prefWidth="1071.0" style="-fx-background-color: #848484;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.edpprojekt2.recentgames.RecentGamesController">
+<AnchorPane prefHeight="789.0" prefWidth="1071.0" style="-fx-background-color: #848484;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.edpprojekt2.recentgames.RecentUserGamesController">
    <children>
       <TableView fx:id="table" layoutX="14.0" layoutY="69.0" prefHeight="720.0" prefWidth="1080.0" style="-fx-background-color: #555555;" />
       <Button fx:id="fetchDataButton" layoutX="508.0" layoutY="32.0" mnemonicParsing="false" onAction="#initTable" style="-fx-background-color: #77C66E#77C66E;" text="Fetch Data" />

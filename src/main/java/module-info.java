@@ -19,4 +19,5 @@ module com.example.edpprojekt2 {
     opens com.example.edpprojekt2.recentgames to javafx.fxml;
     opens com.example.edpprojekt2.mongodb to javafx.base;
     opens com.example.edpprojekt2.credentials;
+    opens com.example.edpprojekt2.usercontroller;
 }

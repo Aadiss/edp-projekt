@@ -1,5 +1,6 @@
 package com.example.edpprojekt2.macaugame;
 
+import com.example.edpprojekt2.credentials.LoginStateSingleton;
 import com.example.edpprojekt2.mongodb.GameDTO;
 
 import java.util.ArrayList;
@@ -22,6 +23,8 @@ public class MacauGame {
     private Date gameStop;
     private Result result;
     private String userBet;
+
+    private LoginStateSingleton loginStateSingleton = LoginStateSingleton.getInstance();
 
     public String getTopCard() {
         return topCard;
@@ -177,6 +180,6 @@ public class MacauGame {
 
     public GameDTO prepareGameDTO(){
         long duration = TimeUnit.MICROSECONDS.toSeconds(this.gameStop.getTime() - this.gameStart.getTime());
-        return new GameDTO(this.gameStart.toString(), this.userBet, this.result.toString(), Long.toString(duration));
+        return new GameDTO(this.gameStart.toString(), this.userBet, this.result.toString(), Long.toString(duration), loginStateSingleton.getLoggedUser().getId().toString());
     }
 }

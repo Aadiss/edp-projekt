@@ -53,11 +53,20 @@ public class MongoAdapter {
     }
 
     private GameDTO toGameDTO(Document doc) {
-        return new GameDTO(new ObjectId(doc.get("_id").toString()), doc.get("date").toString(), doc.get("prize").toString(), doc.get("result").toString(), doc.get("time").toString());
+        return new GameDTO(new ObjectId(doc.get("_id").toString()), doc.get("date").toString(), doc.get("prize").toString(), doc.get("result").toString(), doc.get("time").toString(), doc.get("userId").toString());
     }
 
     private UserDTO toUserDTO(Document doc) {
         return new UserDTO(new ObjectId(doc.get("_id").toString()), doc.get("username").toString(), doc.get("email").toString(), doc.get("password").toString(), doc.get("lastLogged").toString());
+    }
+
+    public List<GameDTO> getUserGames(String userId){
+        List<GameDTO> result = new ArrayList<>();
+        BasicDBObject query = new BasicDBObject();
+        query.put("userId", userId);
+
+        this.edpCollection.find(query).map(this::toGameDTO).forEach(result::add);
+        return result;
     }
 
     public List<GameDTO> getALlGames() {

@@ -9,20 +9,23 @@ public class GameDTO {
     private String prize;
     private String result;
     private String time;
+    private String userId;
 
-    public GameDTO(String date, String prize, String result, String time) {
+    public GameDTO(String date, String prize, String result, String time, String userId) {
         this.date = date;
         this.prize = prize;
         this.result = result;
         this.time = time;
+        this.userId = userId;
     }
 
-    public GameDTO(ObjectId id, String date, String prize, String result, String time) {
+    public GameDTO(ObjectId id, String date, String prize, String result, String time, String userId) {
         this.id = id;
         this.date = date;
         this.prize = prize;
         this.result = result;
         this.time = time;
+        this.userId = userId;
     }
 
     public ObjectId getId() {
@@ -73,10 +76,11 @@ public class GameDTO {
                 + ", prize='" + prize + "'"
                 + ", result='" + result + "'"
                 + ", time='" + time + "'"
+                + ", userId='" + userId + "'"
                 + "}";
     }
 
     public Document toDocument() {
-        return new Document("date", date).append("prize", prize).append("result", result).append("time", time);
+        return new Document("date", date).append("prize", prize).append("result", result).append("time", time).append("userId", userId);
     }
 }

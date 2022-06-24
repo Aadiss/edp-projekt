@@ -1,9 +1,12 @@
 package com.example.edpprojekt2.credentials;
 
+import com.example.edpprojekt2.HelloApplication;
 import com.example.edpprojekt2.mongodb.MongoAdapter;
 import com.example.edpprojekt2.mongodb.UserDTO;
 import com.google.common.hash.Hashing;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -33,14 +36,16 @@ public class LoginController {
         ValidationResult validationResult = validateLogin();
 
         if(validationResult.getStatus().equals(Status.OK)){
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Login Successful");
-            alert.setContentText("Successfully logged!\nNow play and enjoy!");
-            alert.showAndWait();
+            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("user-dashboard-view.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 600, 400);
+            Stage stage = new Stage();
+            stage.setTitle(loginStateSingleton.getLoggedUser().getUsername() + " Dashboard");
+            stage.setScene(scene);
+            stage.show();
 
-            Stage stage = (Stage) errorsLabel.getScene().getWindow();
+            Stage stageLogin = (Stage) errorsLabel.getScene().getWindow();
 
-            stage.close();
+            stageLogin.close();
         }
         else {
             this.errorsLabel.setText(validationResult.getErrorDescription());
