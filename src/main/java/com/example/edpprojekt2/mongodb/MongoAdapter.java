@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MongoAdapter {
-    private static final String MONGODB_URL = "mongodb+srv://root:root@cluster0.befft.mongodb.net/?retryWrites=true&w=majority";
+    private static final String MONGODB_URL = "X";
     private MongoCollection<Document> edpCollection;
     private MongoCollection<Document> usersCollection;
 

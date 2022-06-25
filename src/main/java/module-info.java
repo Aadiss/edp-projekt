@@ -20,4 +20,5 @@ module com.example.edpprojekt2 {
     opens com.example.edpprojekt2.mongodb to javafx.base;
     opens com.example.edpprojekt2.credentials;
     opens com.example.edpprojekt2.usercontroller;
+    opens com.example.edpprojekt2.couriermail;
 }

@@ -33,6 +33,8 @@ public class ValidationResult {
                 return "Password is not correct";
             case INCORRECT_EMAIL:
                 return "Email is not valid, does not contain '@' char";
+            case EMAIL_DOES_NOT_EXIST:
+                return "Email does not exist or notification error occurred. Provide correct email or try again";
             default:
                 return "";
         }

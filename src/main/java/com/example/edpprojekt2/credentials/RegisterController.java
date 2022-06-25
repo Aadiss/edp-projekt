@@ -1,5 +1,6 @@
 package com.example.edpprojekt2.credentials;
 
+import com.example.edpprojekt2.couriermail.CourierMail;
 import com.example.edpprojekt2.mongodb.MongoAdapter;
 import com.example.edpprojekt2.mongodb.UserDTO;
 import javafx.fxml.FXML;
@@ -55,7 +56,7 @@ public class RegisterController {
         }
     }
 
-    private ValidationResult validateRegister(){
+    private ValidationResult validateRegister() throws IOException {
         if(this.usernameField.getText().length() < 6){
             return new ValidationResult(Status.INVALID_USERNAME);
         }
@@ -75,6 +76,11 @@ public class RegisterController {
         if(!this.mongoAdapter.checkUserExistence(this.usernameField.getText(), this.emailField.getText())){
             return new ValidationResult(Status.USED_EMAIL_OR_USERNAME);
         }
+
+        if(!CourierMail.sendMail(this.emailField.getText(), this.usernameField.getText())){
+            return new ValidationResult(Status.EMAIL_DOES_NOT_EXIST);
+        }
+
 
         String hashedPassword = Hashing.sha256()
                 .hashString(this.passwordField.getText(), StandardCharsets.UTF_8)
