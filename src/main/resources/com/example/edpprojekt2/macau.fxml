@@ -14,6 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
+<?import com.example.edpprojekt2.custombox.GoodLuckPlayerLabelControl?>
 <VBox alignment="CENTER" prefHeight="722.0" prefWidth="1209.0" spacing="20.0" style="-fx-background-color: #848484;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.edpprojekt2.macaucontroller.MacauController">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
@@ -78,11 +79,7 @@
             </FXCollections>
          </items>
          </ChoiceBox>
-         <Label fx:id="goodLuckLabel" layoutX="31.0" layoutY="399.0" prefHeight="18.0" prefWidth="296.0" text="Good Luck USERNAME!">
-            <font>
-               <Font name="System Bold" size="24.0" />
-            </font>
-         </Label>
+         <GoodLuckPlayerLabelControl fx:id="playerBox" layoutX="31.0" layoutY="399.0"></GoodLuckPlayerLabelControl>
       </children>
    </Pane>
 </VBox>

@@ -13,6 +13,7 @@ module com.example.edpprojekt2 {
     exports com.example.edpprojekt2.macaucontroller;
     exports com.example.edpprojekt2;
     exports com.example.edpprojekt2.currencyapi;
+    exports com.example.edpprojekt2.custombox;
     opens com.example.edpprojekt2.macaucontroller to javafx.fxml;
     opens com.example.edpprojekt2 to javafx.fxml;
     opens com.example.edpprojekt2.currencyapi to com.google.gson;
@@ -21,4 +22,5 @@ module com.example.edpprojekt2 {
     opens com.example.edpprojekt2.credentials;
     opens com.example.edpprojekt2.usercontroller;
     opens com.example.edpprojekt2.couriermail;
+    opens com.example.edpprojekt2.custombox;
 }

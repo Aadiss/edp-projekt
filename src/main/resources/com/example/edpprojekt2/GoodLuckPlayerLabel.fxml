@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.Bloom?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="40.0" maxWidth="400.0" minHeight="40.0" minWidth="400.0" prefHeight="40.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label layoutX="10.0" prefHeight="40.0" prefWidth="142.0" text="Good Luck ">
+         <font>
+            <Font size="21.0" />
+         </font>
+         <effect>
+            <Bloom threshold="0.32" />
+         </effect>
+      </Label>
+      <Label fx:id="usernameLabel" layoutX="115.0" prefHeight="40.0" prefWidth="142.0" text="null">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+   </children>
+</Pane>

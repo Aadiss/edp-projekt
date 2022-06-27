@@ -3,9 +3,9 @@ package com.example.edpprojekt2.macaucontroller;
 import com.example.edpprojekt2.HelloApplication;
 import com.example.edpprojekt2.credentials.LoginStateSingleton;
 import com.example.edpprojekt2.currencyapi.CurrencyService;
+import com.example.edpprojekt2.custombox.GoodLuckPlayerLabelControl;
 import com.example.edpprojekt2.macaugame.MacauGame;
 import com.example.edpprojekt2.mongodb.MongoAdapter;
-import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ChoiceBox;
@@ -71,7 +71,7 @@ public class MacauController {
     private ChoiceBox currencyChoice;
 
     @FXML
-    private Label goodLuckLabel;
+    private GoodLuckPlayerLabelControl playerBox;
 
     private MacauGame macauGame = null;
     private MongoAdapter mongoAdapter = new MongoAdapter();
@@ -132,7 +132,8 @@ public class MacauController {
 
             this.usersBetLabel.setText("User's bet: " + this.usersBet.getText() + " " + this.currencyChoice.getValue().toString());
             this.turnLabel.setText("Turn: " + this.turn);
-            this.goodLuckLabel.setText("Good Luck " + loginStateSingleton.getLoggedUser().getUsername());
+            System.out.println(loginStateSingleton.getLoggedUser().getUsername());
+            this.playerBox.setUsername(loginStateSingleton.getLoggedUser().getUsername() + "!");
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Invalid bet!");

@@ -11,9 +11,9 @@ import okhttp3.Response;
 import java.io.IOException;
 
 public class CourierMail {
-    private static final String SEND_URL = "X";
-    private static final String TEMPLATE_ID = "X";
-    private static final String BEARER = "X";
+    private static final String SEND_URL = "https://api.courier.com/send";
+    private static final String TEMPLATE_ID = "M7ZBNN11C74Y02H9FJAAARETW6NC";
+    private static final String BEARER = "Bearer pk_prod_360K19YZ66MCKHHCWVM4J8WY52K5";
 
     public static boolean sendMail(String toEmail, String recipientName) throws IOException {
         OkHttpClient client = new OkHttpClient();
